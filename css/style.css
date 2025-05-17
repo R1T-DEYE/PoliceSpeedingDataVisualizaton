@@ -1,0 +1,72 @@
+.main-header {
+    background-color: #022c5e;
+    color: white;
+    padding-bottom: 10px;
+    padding-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes left and right ends apart */
+    font-family: 'Arial', sans-serif;
+    text-align: left;
+    flex-wrap: wrap;
+}
+
+.main-header img {
+    padding-left: 30px;
+    height: 200px;
+}
+
+.main-header h1 {
+    margin: 0 20px;
+    font-size: 2em;
+    flex: 1; /* Allows the heading to grow between logo and buttons */
+}
+
+/* Align buttons to the right */
+.nav-buttons {
+    padding-right: 50px;
+    display: flex;
+    gap: 20px;
+}
+
+header button {
+    background-color: white; 
+    color: black;
+    border: none;
+    padding: 15px 30px;
+    margin: 5px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Arial', sans-serif;
+}
+
+header button:hover {
+    background-color: #0066cc; /* Lighter blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+header button:active {
+    transform: scale(0.98); /* Subtle press down effect */
+}
+
+header button:focus {
+    outline: 3px solid #99ccff; /* Accessibility outline */
+    outline-offset: 2px;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+
+.article {
+    max-width: 900px;
+    margin: 0 0 0 auto; /* Top Right Bottom Left */
+    padding-top: 50px;
+    padding-right: 100px;
+}
+

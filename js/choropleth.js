@@ -10,11 +10,13 @@ const drawChoropleth = (data) => {
     const svg = d3.select("#choropleth")
         .append("svg")
         .attr("width", 800)
-        .attr("height", 700);
+        .attr("height", 500)
+        .style("border", "2px solid black");
+
 
     const projection = d3.geoMercator()
-        .scale(800)
-        .center([135, -28])
+        .scale(700)
+        .center([134, -31])
         .translate([400, 300]);
 
     const path = d3.geoPath().projection(projection);
