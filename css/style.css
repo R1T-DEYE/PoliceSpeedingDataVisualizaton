@@ -15,6 +15,8 @@
 .main-header img {
     padding-left: 30px;
     height: 200px;
+    user-select: none;
+    pointer-events: none;
 }
 
 .main-header h1 {
@@ -65,8 +67,35 @@ body {
 
 .article {
     max-width: 900px;
-    margin: 0 0 0 auto; /* Top Right Bottom Left */
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 50px;
-    padding-right: 100px;
+    transform: translateX(25%); /* nudges it a bit right */
 }
 
+#figures {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    }
+
+.stat-box {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    flex: 1 1 200px;
+    text-align: center;
+}
+
+.stat-title {
+    font-size: 14px;
+    color: #666;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+}

@@ -32,7 +32,9 @@ d3.csv("data/police_enforcement_speeding_2023.csv", d => ({
     });
 
     console.log(data);
+    drawFigures(data);
     drawChoropleth(data);
+    
 
 
 }).catch(error => {

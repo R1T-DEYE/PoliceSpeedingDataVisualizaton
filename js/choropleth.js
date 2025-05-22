@@ -1,3 +1,5 @@
+
+
 const drawChoropleth = (data) => {
     // Aggregate fines per jurisdiction
     const finesByJurisdiction = d3.rollup(
@@ -22,8 +24,9 @@ const drawChoropleth = (data) => {
     const path = d3.geoPath().projection(projection);
 
     // Color scale
-    const maxFines = d3.max(data, d => d.fines);
-    const minFines = d3.min(data, d => d.fines);
+    const fineValues = Array.from(finesByJurisdiction.values());
+    const maxFines = d3.max(fineValues);
+    const minFines = d3.min(fineValues);
 
     const colorScale = d3.scaleSequential()
     .domain([minFines, maxFines]) // or [0, maxFines] if you prefer starting at 0
@@ -53,4 +56,46 @@ const drawChoropleth = (data) => {
         .catch(error => {
             console.error("Error loading GeoJSON:", error);
         });
+
+
+
+    // Legend dimensions
+    const legendWidth = 250;
+    const legendHeight = 10;
+
+    const legendSvg = svg.append("g")
+        .attr("transform", `translate(50, 450 )`);
+
+    // Create a gradient
+    const defs = svg.append("defs");
+
+    const linearGradient = defs.append("linearGradient")
+        .attr("id", "legend-gradient");
+
+    linearGradient.selectAll("stop")
+        .data(d3.ticks(0, 1, 10))  // 10 stops
+        .enter().append("stop")
+        .attr("offset", d => `${d * 100}%`)
+        .attr("stop-color", d => colorScale(minFines + d * (maxFines - minFines)));
+
+    // Draw the gradient rectangle
+    legendSvg.append("rect")
+        .attr("width", legendWidth)
+        .attr("height", legendHeight)
+        .style("fill", "url(#legend-gradient)")
+        .style("stroke", "black");
+
+    // Add labels
+    const legendScale = d3.scaleLinear()
+        .domain([minFines, maxFines])
+        .range([0, legendWidth]);
+
+    const legendAxis = d3.axisBottom(legendScale)
+        .ticks(5)
+        .tickFormat(d3.format(".2s"));
+
+    legendSvg.append("g")
+        .attr("transform", `translate(0, ${legendHeight})`)
+        .call(legendAxis);
+
 };
