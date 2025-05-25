@@ -142,3 +142,12 @@ body {
   background-color: #007bff;
   color: white;
 }
+.tooltip {
+    font-family: Arial, sans-serif;
+    pointer-events: none;
+    user-select: none;
+}
+
+#bar {
+    position: relative;
+}

@@ -1,3 +1,5 @@
+
+// replace annotation from csv into full name
 const stateNameMap = {
     'VIC': 'Victoria',
     'NSW': 'New South Wales',
@@ -29,11 +31,11 @@ const filesAndParsers = [
     {
         path: "data/cleaned_up_fatal_crashes.csv",
         parser: d => ({
-            year: +d.Year,            // CSV header is "Year"
-            month: +d.Month,          // CSV header is "Month"
-            fatalities: +d.Num_Fatalities  // CSV header is "Num_Fatalities"
+            year: +d.Year,            
+            month: +d.Month,          
+            fatalities: +d.Num_Fatalities  
         }),
-        needsStateMapping: false  // Jurisdiction mapping not needed here (or you can add if you want)
+        needsStateMapping: false  // Jurisdiction mapping not needed here 
     }
 ];
 
@@ -56,13 +58,12 @@ Promise.all(
     console.log("Speeding Data", speedingData);
     console.log("Fatal Crashes Data", fatalCrashesData);
 
-    // Example: Draw bar chart for yearly fatalities
     drawFigures(speedingData);
+    drawBar(speedingData, fatalCrashesData);
     drawChoropleth(speedingData);
 
-    drawBar(speedingData, fatalCrashesData);
+    
 
-    // You can create button handlers to toggle between charts and tables
 }).catch(error => {
     console.error("Error loading one or more files: ", error);
 });
