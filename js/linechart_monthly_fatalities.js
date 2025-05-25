@@ -50,28 +50,6 @@ const tooltip = d3.select("#line-chart-monthly-fatal")
   .append("div")
   .attr("class", "tooltip-linechart");
 
-// Add points with circles
-svg.selectAll("circle")
-  .data(data)
-  .enter()
-  .append("circle")
-  .attr("cx", d => x(d.month))
-  .attr("cy", d => y(d.fatalities))
-  .attr("r", 5)
-  .attr("fill", "red")
-  .on("mouseover", (event, d) => {
-    tooltip
-      .style("opacity", 1)
-      .html(`<strong>${d.month}</strong><br>Fatalities: ${d.fatalities}`);
-  })
-  .on("mousemove", event => {
-    tooltip
-      .style("left", (event.offsetX + 10) + "px")
-      .style("top", (event.offsetY - 30) + "px");
-  })
-  .on("mouseleave", () => {
-    tooltip.style("opacity", 0);
-  });
   
 
     svg.append("path")
@@ -80,6 +58,31 @@ svg.selectAll("circle")
       .attr("stroke", "red")
       .attr("stroke-width", 2.5)
       .attr("d", line);
+
+
+    // Add points with circles
+    svg.selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("cx", d => x(d.month))
+      .attr("cy", d => y(d.fatalities))
+      .attr("r", 5)
+      .attr("fill", "red")
+      .on("mouseover", (event, d) => {
+        tooltip
+          .style("opacity", 1)
+          .html(`<strong>${d.month}</strong><br>Fatalities: ${d.fatalities}`);
+      })
+      .on("mousemove", event => {
+        const svgRect = svg.node().getBoundingClientRect();
+        tooltip
+          .style("left", (event.clientX - 595) + "px")
+          .style("top", (event.clientY - 200) + "px");
+      })
+      .on("mouseleave", () => {
+        tooltip.style("opacity", 0);
+      });
 
     svg.append("text")
       .attr("x", width / 2)
