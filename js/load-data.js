@@ -11,6 +11,11 @@ const stateNameMap = {
     'ACT': 'Australian Capital Territory'
 };
 
+const monthNameToNumber = {
+    "January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6,
+    "July": 7, "August": 8, "September": 9, "October": 10, "November": 11, "December": 12
+};
+
 const filesAndParsers = [
     {
         path: "data/police_enforcement_speeding_2023.csv",
@@ -32,7 +37,7 @@ const filesAndParsers = [
         path: "data/cleaned_up_fatal_crashes.csv",
         parser: d => ({
             year: +d.Year,            
-            month: +d.Month,          
+            month: monthNameToNumber[d.Month] || 0,          
             fatalities: +d.Num_Fatalities  
         }),
         needsStateMapping: false  // Jurisdiction mapping not needed here 

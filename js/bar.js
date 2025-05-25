@@ -1,3 +1,5 @@
+
+
 const drawBar = (speedData, fatalData) => {
     const container = d3.select("#bar");
     container.html(""); // Clear previous content
