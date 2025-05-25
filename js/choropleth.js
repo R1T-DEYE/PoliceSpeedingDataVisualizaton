@@ -50,7 +50,7 @@ const drawChoropleth = (data) => {
                 .text(d => {
                     const state = d.properties.name;
                     const value = finesByJurisdiction.get(state);
-                    return `${state}: ${value || 0} fines`;
+                    return `${state}: ${(value || 0).toLocaleString()} fines`;
                 });
         })
         .catch(error => {
