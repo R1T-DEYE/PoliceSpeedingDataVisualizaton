@@ -84,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
           .html(`<strong>${d.month}</strong><br>Fines: ${d.fines.toLocaleString()}`);
       })
       .on("mousemove", event => {
-        const svgRect = svg.node().getBoundingClientRect();
         tooltip
           .style("left", (event.clientX - 595) + "px")
           .style("top", (event.clientY - 200) + "px");

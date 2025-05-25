@@ -75,7 +75,6 @@ const tooltip = d3.select("#line-chart-monthly-fatal")
           .html(`<strong>${d.month}</strong><br>Fatalities: ${d.fatalities}`);
       })
       .on("mousemove", event => {
-        const svgRect = svg.node().getBoundingClientRect();
         tooltip
           .style("left", (event.clientX - 595) + "px")
           .style("top", (event.clientY - 200) + "px");
