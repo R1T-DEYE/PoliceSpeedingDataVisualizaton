@@ -99,3 +99,46 @@ body {
     font-weight: bold;
     color: #222;
 }
+
+
+
+/* for monthly fines and monthly fatalities */
+#chart-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.chart-block {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Show both charts side by side */
+#chart-wrapper.both .chart-block {
+  width: 48%;
+  display: block;
+}
+
+/* Hide Fines chart */
+#chart-wrapper.fatal #line-chart-monthly-fines {
+  display: none;
+}
+#chart-wrapper.fatal #line-chart-monthly-fatal {
+  display: block;
+  width: 100%;
+}
+
+/* Hide Fatalities chart */
+#chart-wrapper.fines #line-chart-monthly-fatal {
+  display: none;
+}
+#chart-wrapper.fines #line-chart-monthly-fines {
+  display: block;
+  width: 100%;
+}
+#toggle-buttons button.active {
+  background-color: #007bff;
+  color: white;
+}
