@@ -13,10 +13,14 @@
         <link rel="stylesheet" href="css/style.css">
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="js/load-data.js"></script>
+        <script src="js/button_monthly_fines.js"></script>
         <script src="js/interactions.js"></script>
         <script src="js/choropleth.js"></script>
         <script src="js/figures.js"></script>
         <script src="js/bar.js"></script>
+        <script src="js/linechart_monthly_fatalities.js"></script>
+        <script src="js/linechart_monthly_fines.js"></script>
+
 
 
         <!--Fonts & Icons-->
@@ -59,6 +63,17 @@
             <p>Place holder</p>
         </div>
 
+        <div class="article">
+            <div id="toggle-buttons">
+                <button data-view="fatal">Show Fatalities Only</button>
+                <button data-view="fines">Show Fines Only</button>
+                <button data-view="both">Show Both</button>
+            </div>
+            <div id="chart-wrapper" class="both">
+                <div id="line-chart-monthly-fatal" class="chart-block"></div>
+                <div id="line-chart-monthly-fines" class="chart-block"></div>
+            </div>
+        </div>
         
 
 
