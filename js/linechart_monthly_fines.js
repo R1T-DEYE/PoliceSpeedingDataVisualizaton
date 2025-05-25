@@ -57,6 +57,33 @@ document.addEventListener("DOMContentLoaded", () => {
       .x(d => x(d.month))
       .y(d => y(d.fines));
 
+      const tooltip = d3.select("#line-chart-monthly-fines")
+  .append("div")
+  .attr("class", "tooltip-linechart");
+
+svg.selectAll("circle")
+  .data(data)
+  .enter()
+  .append("circle")
+  .attr("cx", d => x(d.month))
+  .attr("cy", d => y(d.fines))
+  .attr("r", 5)
+  .attr("fill", "orange")
+  .on("mouseover", (event, d) => {
+    tooltip
+      .style("opacity", 1)
+      .html(`<strong>${d.month}</strong><br>Fines: ${d.fines.toLocaleString()}`);
+  })
+  .on("mousemove", event => {
+    tooltip
+      .style("left", (event.offsetX + 10) + "px")
+      .style("top", (event.offsetY - 30) + "px");
+  })
+  .on("mouseleave", () => {
+    tooltip.style("opacity", 0);
+  });
+
+
     svg.append("path")
       .datum(data)
       .attr("fill", "none")
@@ -71,4 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .style("font-weight", "bold")
       .text("Monthly Speeding Fines");
   });
+
+
+
 });
