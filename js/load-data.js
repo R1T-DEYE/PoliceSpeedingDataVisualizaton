@@ -1,5 +1,5 @@
 
-// replace annotation from csv into full name
+// replace annotation from csv into full name for australia mapping
 const stateNameMap = {
     'VIC': 'Victoria',
     'NSW': 'New South Wales',

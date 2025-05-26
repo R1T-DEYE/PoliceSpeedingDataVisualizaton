@@ -1,5 +1,10 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
-  d3.csv("../data/cleaned_up_crash_by_date.csv").then(fatalData => {
+  d3.csv("./data/cleaned_up_crash_by_date.csv").then(fatalData => {
+    console.log(window.location.href);
+    console.log("Trying to fetch:", new URL("../data/cleaned_up_crash_by_date.csv", window.location.href).href);
+
     const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 

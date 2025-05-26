@@ -1,5 +1,11 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
-  d3.csv("../data/police_enforcement_speeding_2023.csv").then(finesData => {
+  d3.csv("./data/police_enforcement_speeding_2023.csv").then(finesData => {
+    console.log(window.location.href);
+    console.log("Trying to fetch:", new URL("../data/cleaned_up_crash_by_date.csv", window.location.href).href);
+
+
     const monthMap = {
       "Jan": "Jan", "Feb": "Feb", "Mar": "Mar", "Apr": "Apr", "May": "May", "June": "Jun", "July": "Jul", "Aug": "Aug", "Sept": "Sep", "Sep": "Sep",
       "Oct": "Oct", "Nov": "Nov", "Dec": "Dec"
