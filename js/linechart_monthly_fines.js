@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   d3.csv("./data/police_enforcement_speeding_2023.csv").then(finesData => {
     console.log(window.location.href);
-    console.log("Trying to fetch:", new URL("../data/cleaned_up_crash_by_date.csv", window.location.href).href);
+    console.log("Trying to fetch:", new URL("../data/police_enforcement_speeding_2023.csv", window.location.href).href);
 
 
     const monthMap = {
