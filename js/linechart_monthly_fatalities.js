@@ -22,12 +22,15 @@ function drawFatalChart() {
     const wrapper = document.getElementById("chart-wrapper");
     const isBoth = wrapper.classList.contains("both");
 
-    const container = document.getElementById("line-chart-monthly-fatal");
-    const containerWidth = container.getBoundingClientRect().width;
+const container = document.getElementById("line-chart-monthly-fatal");
+const containerWidth = container.getBoundingClientRect().width;
 
-    const margin = { top: 50, right: 30, bottom: 50, left: 60 };
-    const width = containerWidth - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
+const margin = { top: 50, right: 30, bottom: 50, left: 60 };
+const minWidth = 350;
+const effectiveWidth = Math.max(containerWidth, minWidth);
+const width = effectiveWidth - margin.left - (margin.right * 0.1);
+const height = 400 - margin.top - margin.bottom;
+
 
     const svg = d3.select("#line-chart-monthly-fatal")
       .append("svg")

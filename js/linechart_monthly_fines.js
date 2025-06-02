@@ -49,9 +49,11 @@ function drawFinesChart() {
     const containerWidth = container.getBoundingClientRect().width;
 
     const margin = { top: 50, right: 30, bottom: 50, left: 60 };
-    const width = containerWidth - margin.left - margin.right;
+    const width = containerWidth - (margin.right * 0.5);
     const height = 400 - margin.top - margin.bottom;
 
+
+    
     const svg = d3.select("#line-chart-monthly-fines")
       .append("svg")
       .attr("width", width + margin.left + margin.right)

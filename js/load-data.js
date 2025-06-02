@@ -63,7 +63,7 @@ Promise.all(
     console.log("Speeding Data", speedingData);
     console.log("Fatal Crashes Data", fatalCrashesData);
 
-    drawFigures(speedingData);
+    drawFigures(speedingData, fatalCrashesData);
     drawBar(speedingData, fatalCrashesData);
     drawChoropleth(speedingData);
 

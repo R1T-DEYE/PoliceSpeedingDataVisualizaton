@@ -12,6 +12,7 @@
         <!-- CSS/Java Link -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/sidebar.css">
+        <link rel="stylesheet" href="css/monthly_fines_speed.css">
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="js/load-data.js"></script>
         <script src="js/button_monthly_fines.js"></script>
@@ -44,9 +45,9 @@
         <nav class="sidebar-nav">
         <ul>
             <li><button onclick="scrollToSection('section-figures')">Key Figures</button></li>
-            <li><button onclick="scrollToSection('section-monthly')">Monthly Charts</button></li>
+            <li><button onclick="scrollToSection('section-monthly')">Fines and Fatalities by Month</button></li>
             <li><button onclick="scrollToSection('section-bar')">Bar Chart</button></li>
-            <li><button onclick="scrollToSection('section-choropleth')">Choropleth</button></li>
+            <li><button onclick="scrollToSection('section-choropleth')">Fines by Jurisdiction</button></li>
         </ul>
         </nav>
 
@@ -54,7 +55,7 @@
         <div class="article" id="section-figures">
             <h1>Key Figures</h1>
             <div id="figures"></div>
-            <p>Place holder</p>
+            <p>All figures in this page are based on data from 2023. Including data from Road Safety Enforcement Data 2023, and Australian Road Deaths Database  </p>
         </div>
 
         <div class="article" id="section-monthly">
@@ -96,6 +97,7 @@
     </body>
 
 <script>
+    // Function to scroll to a specific section
     function scrollToSection(id) {
     const el = document.getElementById(id);
     if (el) {
