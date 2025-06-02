@@ -119,6 +119,7 @@ body {
 #chart-wrapper.both .chart-block {
   width: 48%;
   display: block;
+  flex: 1 1 auto;
 }
 
 /* Hide Fines chart */

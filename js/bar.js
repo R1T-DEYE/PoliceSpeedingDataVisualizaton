@@ -99,7 +99,7 @@ const drawBar = (speedData, fatalData) => {
     svg.append("g")
         .call(d3.axisLeft(yLeft))
         .append("text")
-        .attr("fill", "steelblue")
+        .attr("fill", "#022C5E")
         .attr("transform", "rotate(-90)")
         .attr("y", -70)
         .attr("x", -height / 2)
@@ -113,7 +113,7 @@ const drawBar = (speedData, fatalData) => {
         .attr("transform", `translate(${width},0)`)
         .call(d3.axisRight(yRight))
         .append("text")
-        .attr("fill", "tomato")
+        .attr("fill", "#FCA311")
         .attr("transform", "rotate(-90)")
         .attr("y", 55)
         .attr("x", -height / 2)
@@ -134,7 +134,7 @@ const drawBar = (speedData, fatalData) => {
         .attr("y", d => yLeft(d.fines))
         .attr("width", x.bandwidth())
         .attr("height", d => height - yLeft(d.fines))
-        .attr("fill", "steelblue")
+        .attr("fill", "#022C5E")
         .on("mouseover", (event, d) => {
         tooltip.style("visibility", "visible")
                 .html(`<strong>${monthNames[d.month - 1]}</strong><br/>Fines: ${d.fines.toLocaleString()}`);
@@ -160,7 +160,7 @@ const drawBar = (speedData, fatalData) => {
     svg.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "tomato")
+        .attr("stroke", "#FCA311")
         .attr("stroke-width", 2)
         .attr("d", line);
 
@@ -177,7 +177,7 @@ const drawBar = (speedData, fatalData) => {
         .attr("cx", d => x(monthNames[d.month - 1]) + x.bandwidth() / 2)
         .attr("cy", d => yRight(d.fatalities))
         .attr("r", 5)
-        .attr("fill", "tomato")
+        .attr("fill", "#FCA311")
         .on("mouseover", (event, d) => {
         tooltip.style("visibility", "visible")
                 .html(`<strong>${monthNames[d.month - 1]}</strong><br/>Fatalities: ${d.fatalities.toLocaleString()}`);
@@ -202,7 +202,7 @@ const drawBar = (speedData, fatalData) => {
         .attr("x", 0)
         .attr("width", 15)
         .attr("height", 15)
-        .attr("fill", "steelblue");
+        .attr("fill", "#022C5E");
 
     legend.append("text")
         .attr("x", 20)
@@ -214,7 +214,7 @@ const drawBar = (speedData, fatalData) => {
         .attr("x", 70)
         .attr("width", 15)
         .attr("height", 15)
-        .attr("fill", "tomato");
+        .attr("fill", "#FCA311");
 
     legend.append("text")
         .attr("x", 90)

@@ -1,10 +1,5 @@
-
-
-document.addEventListener("DOMContentLoaded", () => {
+function drawFatalChart() {
   d3.csv("./data/cleaned_up_crash_by_date.csv").then(fatalData => {
-    console.log(window.location.href);
-    console.log("Trying to fetch:", new URL("../data/cleaned_up_crash_by_date.csv", window.location.href).href);
-
     const monthOrder = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -19,14 +14,27 @@ document.addEventListener("DOMContentLoaded", () => {
       fatalities: fatalByMonth.get(month) || 0
     }));
 
-    const margin = { top: 50, right: 30, bottom: 50, left: 60 },
-          width = 450 - margin.left - margin.right,
-          height = 400 - margin.top - margin.bottom;
+    // Clean previous chart and tooltip
+    d3.select("#line-chart-monthly-fatal").select("svg").remove();
+    d3.select("#line-chart-monthly-fatal").select(".tooltip-linechart").remove();
+
+    // Detect layout mode
+    const wrapper = document.getElementById("chart-wrapper");
+    const isBoth = wrapper.classList.contains("both");
+
+    const container = document.getElementById("line-chart-monthly-fatal");
+    const containerWidth = container.getBoundingClientRect().width;
+
+    const margin = { top: 50, right: 30, bottom: 50, left: 60 };
+    const width = containerWidth - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
 
     const svg = d3.select("#line-chart-monthly-fatal")
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
+      .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
@@ -50,22 +58,17 @@ document.addEventListener("DOMContentLoaded", () => {
       .x(d => x(d.month))
       .y(d => y(d.fatalities));
 
-    // Tooltip div (placed just once per chart)
-const tooltip = d3.select("#line-chart-monthly-fatal")
-  .append("div")
-  .attr("class", "tooltip-linechart");
-
-  
+    const tooltip = d3.select("#line-chart-monthly-fatal")
+      .append("div")
+      .attr("class", "tooltip-linechart");
 
     svg.append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke", "red")
+      .attr("stroke", "#022C5E")
       .attr("stroke-width", 2.5)
       .attr("d", line);
 
-
-    // Add points with circles
     svg.selectAll("circle")
       .data(data)
       .enter()
@@ -73,7 +76,7 @@ const tooltip = d3.select("#line-chart-monthly-fatal")
       .attr("cx", d => x(d.month))
       .attr("cy", d => y(d.fatalities))
       .attr("r", 5)
-      .attr("fill", "red")
+      .attr("fill", "#022C5E")
       .on("mouseover", (event, d) => {
         tooltip
           .style("opacity", 1)
@@ -95,6 +98,4 @@ const tooltip = d3.select("#line-chart-monthly-fatal")
       .style("font-weight", "bold")
       .text("Monthly Fatal Crashes");
   });
-
-  
-});
+}
