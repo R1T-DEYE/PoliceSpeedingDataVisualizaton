@@ -79,13 +79,33 @@ function drawFinesChart() {
     svg.append("g")
       .call(d3.axisLeft(y));
 
+    svg.append("line")
+          .attr("x1", 0)
+          .attr("x2", width)
+          .attr("y1", y(350000))
+          .attr("y2", y(350000))
+          .attr("stroke", "#999")
+          .attr("stroke-width", 1)
+          .style("stroke-dasharray", "6 4")
+          .style("opacity", 0.4);
+
     const line = d3.line()
       .x(d => x(d.month))
       .y(d => y(d.fines));
 
     const tooltip = d3.select("#line-chart-monthly-fines")
-      .append("div")
-      .attr("class", "tooltip-linechart");
+  .append("div")
+  .attr("class", "tooltip-linechart")
+  .style("position", "absolute")
+  .style("opacity", 0)
+  .style("pointer-events", "none")
+  .style("background", "#fff")
+  .style("padding", "6px 10px")
+  .style("border", "1px solid #ccc")
+  .style("border-radius", "4px")
+  .style("font-size", "12px")
+  .style("box-shadow", "0 2px 6px rgba(0,0,0,0.1)");
+
 
     svg.append("path")
       .datum(data)
@@ -109,9 +129,10 @@ function drawFinesChart() {
       })
       .on("mousemove", event => {
         tooltip
-          .style("left", (event.clientX - 595) + "px")
-          .style("top", (event.clientY - 200) + "px");
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 28) + "px");
       })
+
       .on("mouseleave", () => {
         tooltip.style("opacity", 0);
       });

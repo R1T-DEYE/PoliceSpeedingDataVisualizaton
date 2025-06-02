@@ -22,6 +22,7 @@
         <script src="js/bar.js"></script>
         <script src="js/linechart_monthly_fatalities.js"></script>
         <script src="js/linechart_monthly_fines.js"></script>
+        <script src="js/speed_limit_fatalities.js"></script>
 
 
 
@@ -36,10 +37,10 @@
         <header class="main-header">
             <img src="assets/aus_gov_logo.png">
 
-            <div class="nav-buttons">
+            <!-- <div class="nav-buttons">
                 <button type="button">Home</button>
                 <button type="button">About Data</button>
-            </div>
+            </div> -->
         </header>
 
         <nav class="sidebar-nav">
@@ -48,6 +49,8 @@
             <li><button onclick="scrollToSection('section-monthly')">Fines and Fatalities by Month</button></li>
             <li><button onclick="scrollToSection('section-bar')">Bar Chart</button></li>
             <li><button onclick="scrollToSection('section-choropleth')">Fines by Jurisdiction</button></li>
+            <li><button onclick="scrollToSection('section-speed-bars')">Speed Limit and Fatalities</button></li>
+            <li><button onclick="scrollToSection('data-source')">Data Sources</button></li>
         </ul>
         </nav>
 
@@ -59,6 +62,7 @@
         </div>
 
         <div class="article" id="section-monthly">
+            <h1>Fines and Fatalities by Month 2023</h1>
             <div id="toggle-buttons">
                 <button data-view="fatal">Show Fatalities Only</button>
                 <button data-view="fines">Show Fines Only</button>
@@ -78,13 +82,31 @@
         </div>
 
         <div class="article" id="section-choropleth">
-            <h1>Choropleth</h1>
+            <h1>Speed Fines By Jurisdiction 2023</h1>
             <p>Place holder</p>
             <div id="choropleth"></div>
             <p>Place holder</p>
         </div>
 
+        <div class="article" id="section-speed-bars">
+            <h1>Speed Limit and Fatalities</h1>
+            <!-- <div id="speed-limit-buttons">
+                <button data-mode="2023" class="active">2023</button>
+                <button data-mode="all">All Years</button>
+                <button data-mode="granular">2023 Granular</button>
+            </div> -->
+            <div id="section-speed-limit-fatalities"></div>
+            <p>Place holder</p>
+        </div>
+        <div id="speed-limit-bar"></div>
 
+        <div class="article" id="data-source">
+            <h2>Data Sources</h2>
+            <p>Road Safety Enforcement Data 2023, Australian Road Deaths Database<br> Notes:</p>
+            <ul>
+                <li> Queensland data submits their Speed Fines in January for the whole year. For our charts, we took the data from queensland and found the average for each month</li>
+            </ul>
+        </div>
 
 
 

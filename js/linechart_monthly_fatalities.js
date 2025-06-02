@@ -14,23 +14,16 @@ function drawFatalChart() {
       fatalities: fatalByMonth.get(month) || 0
     }));
 
-    // Clean previous chart and tooltip
     d3.select("#line-chart-monthly-fatal").select("svg").remove();
     d3.select("#line-chart-monthly-fatal").select(".tooltip-linechart").remove();
 
-    // Detect layout mode
-    const wrapper = document.getElementById("chart-wrapper");
-    const isBoth = wrapper.classList.contains("both");
+    const container = document.getElementById("line-chart-monthly-fatal");
+    const containerWidth = container.getBoundingClientRect().width;
 
-const container = document.getElementById("line-chart-monthly-fatal");
-const containerWidth = container.getBoundingClientRect().width;
-
-const margin = { top: 50, right: 30, bottom: 50, left: 60 };
-const minWidth = 350;
-const effectiveWidth = Math.max(containerWidth, minWidth);
-const width = effectiveWidth - margin.left - (margin.right * 0.1);
-const height = 400 - margin.top - margin.bottom;
-
+    const margin = { top: 50, right: 30, bottom: 50, left: 60 };
+    const minWidth = 350;
+    const width = Math.max(containerWidth, minWidth) - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
 
     const svg = d3.select("#line-chart-monthly-fatal")
       .append("svg")
@@ -57,13 +50,35 @@ const height = 400 - margin.top - margin.bottom;
     svg.append("g")
       .call(d3.axisLeft(y));
 
+    // Add dashed reference lines at y = 70 and y = 100
+    [70, 100].forEach(value => {
+      svg.append("line")
+        .attr("x1", 0)
+        .attr("x2", width)
+        .attr("y1", y(value))
+        .attr("y2", y(value))
+        .attr("stroke", "#999")
+        .attr("stroke-width", 1)
+        .attr("stroke-dasharray", "6 4")
+        .style("opacity", 0.4);
+    });
+
     const line = d3.line()
       .x(d => x(d.month))
       .y(d => y(d.fatalities));
 
     const tooltip = d3.select("#line-chart-monthly-fatal")
       .append("div")
-      .attr("class", "tooltip-linechart");
+      .attr("class", "tooltip-linechart")
+      .style("position", "absolute")
+      .style("opacity", 0)
+      .style("pointer-events", "none")
+      .style("background", "#fff")
+      .style("padding", "6px 10px")
+      .style("border", "1px solid #ccc")
+      .style("border-radius", "4px")
+      .style("font-size", "12px")
+      .style("box-shadow", "0 2px 6px rgba(0,0,0,0.1)");
 
     svg.append("path")
       .datum(data)
@@ -87,8 +102,8 @@ const height = 400 - margin.top - margin.bottom;
       })
       .on("mousemove", event => {
         tooltip
-          .style("left", (event.clientX - 595) + "px")
-          .style("top", (event.clientY - 200) + "px");
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 28) + "px");
       })
       .on("mouseleave", () => {
         tooltip.style("opacity", 0);
