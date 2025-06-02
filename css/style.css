@@ -66,12 +66,12 @@ body {
 
 
 .article {
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 50px;
-    transform: translateX(25%); /* nudges it a bit right */
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-right: 30px;
 }
+
 
 #figures {
     display: flex;
