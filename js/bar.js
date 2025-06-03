@@ -256,7 +256,8 @@ const drawBar = (speedData, fatalData) => {
             .text(d => d)
             .style("border", "1px solid black")
             .style("padding", "8px")
-            .style("background-color", "#f2f2f2");
+            .style("background-color", "#022457")
+            .style("color", "white");
 
         tbody.selectAll("tr")
             .data(data)
@@ -267,7 +268,7 @@ const drawBar = (speedData, fatalData) => {
             .enter()
             .append("td")
             .text(d => d)
-            .style("border", "1px solid black")
+            .style("border", "1px solid #E5E5E5")
             .style("padding", "8px");
     }
 

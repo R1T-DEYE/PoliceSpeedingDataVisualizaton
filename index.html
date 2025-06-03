@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/sidebar.css">
         <link rel="stylesheet" href="css/monthly_fines_speed.css">
+        <link rel="stylesheet" href="css/2008_2023_speed.css">
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="js/load-data.js"></script>
         <script src="js/button_monthly_fines.js"></script>
@@ -23,6 +24,7 @@
         <script src="js/linechart_monthly_fatalities.js"></script>
         <script src="js/linechart_monthly_fines.js"></script>
         <script src="js/speed_limit_fatalities.js"></script>
+        <script src="js/fines_2008_2023.js"></script>
 
 
 
@@ -45,7 +47,7 @@
 
         <nav class="sidebar-nav">
         <ul>
-            <li><button onclick="scrollToSection('section-figures')">Key Figures</button></li>
+            <li><button onclick="scrollToSection('section-figures')">2023 at a Glance</button></li>
             <li><button onclick="scrollToSection('section-monthly')">Fines and Fatalities by Month</button></li>
             <li><button onclick="scrollToSection('section-bar')">Bar Chart</button></li>
             <li><button onclick="scrollToSection('section-choropleth')">Fines by Jurisdiction</button></li>
@@ -90,15 +92,41 @@
 
         <div class="article" id="section-speed-bars">
             <h1>Speed Limit and Fatalities</h1>
-            <!-- <div id="speed-limit-buttons">
-                <button data-mode="2023" class="active">2023</button>
-                <button data-mode="all">All Years</button>
-                <button data-mode="granular">2023 Granular</button>
-            </div> -->
             <div id="section-speed-limit-fatalities"></div>
             <p>Place holder</p>
         </div>
         <div id="speed-limit-bar"></div>
+
+        <div class="article" id="section-speed-2008-2023">
+        <h1>Speed Limit and Fatalities 2008–2023</h1>
+        <div id="view-toggle">
+            <button id="show-line">Line Chart</button>
+            <button id="show-table">Table</button>
+        </div>
+
+        <div id="speed-2008-2023">
+            <div id="line-view"></div>
+
+            <div id="table-view" style="display: none;">
+            <label for="state-filter">Select State: </label>
+            <select id="state-filter"></select>
+            <table id="speed-fines-table">
+                <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>State</th>
+                    <th>Total Speeding Fines</th>
+                    <th>% Change from Previous Year</th>
+                    <th>Police Fines</th>
+                    <th>Camera Fines</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+
 
         <div class="article" id="data-source">
             <h2>Data Sources</h2>
@@ -107,7 +135,6 @@
                 <li> Queensland data submits their Speed Fines in January for the whole year. For our charts, we took the data from queensland and found the average for each month</li>
             </ul>
         </div>
-
 
 
 
