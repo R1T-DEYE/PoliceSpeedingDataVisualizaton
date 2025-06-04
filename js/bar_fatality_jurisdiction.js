@@ -159,8 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const menuHTML = `
     <div id="jurisdiction-toggle" style="margin-bottom: 15px;">
-      <button data-mode="raw" class="active">Fatalities</button>
-      <button data-mode="compare">Fines</button>
+      <button class="styled-button" data-mode="raw" class="active">Fatalities</button>
+      <button class="styled-button" data-mode="compare">Fines</button>
     </div>
   `;
   const container = document.getElementById("section-jurisdiction-fatality");

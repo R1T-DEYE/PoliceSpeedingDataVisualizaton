@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="css/sidebar.css">
         <link rel="stylesheet" href="css/monthly_fines_speed.css">
         <link rel="stylesheet" href="css/2008_2023_speed.css">
+        <link rel="stylesheet" href="css/buttons.css">
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="js/load-data.js"></script>
         <script src="js/button_monthly_fines.js"></script>
@@ -60,7 +61,7 @@
 
 
         <div class="article" id="section-figures">
-            <h1>2023 At a glance</h1>
+            <h1>Australia at a glance (2023)</h1>
             <div id="figures"></div>
             <p>All figures in this page are based on data from 2023. Including data from Road Safety Enforcement Data 2023, and Australian Road Deaths Database  </p>
         </div>
@@ -68,9 +69,9 @@
         <div class="article" id="section-monthly">
             <h1>Fines and Fatalities by Month 2023</h1>
             <div id="toggle-buttons">
-                <button data-view="fatal">Show Fatalities Only</button>
-                <button data-view="fines">Show Fines Only</button>
-                <button data-view="both">Show Both</button>
+                <button class="styled-button" data-view="fatal">Show Fatalities Only</button>
+                <button class="styled-button" data-view="fines">Show Fines Only</button>
+                <button class="styled-button" data-view="both">Show Both</button>
             </div>
             <div id="chart-wrapper" class="both">
                 <div id="line-chart-monthly-fatal" class="chart-block"></div>
@@ -86,9 +87,9 @@
         </div>
 
         <div class="article" id="section-choropleth">
-            <h1>Speed Fines By Jurisdiction 2023</h1>
+            <h1>Speeding Fines By Jurisdiction 2023</h1>
             <div id="choropleth"></div>
-            <p>The total number of speed fine infringements over the course of 2023. </p>
+            <p>The total number of speed fine infringements by state over the course of 2023. </p>
         </div>
 
         <div class="article" id="section-bar-fatality-jurisdiction">
@@ -100,15 +101,15 @@
         <div class="article" id="section-speed-bars">
             <h1>Speed Limit and Fatalities</h1>
             <div id="section-speed-limit-fatalities"></div>
-            <p>Place holder</p>
+            <p>The standard speed limit in Australia is 50kmph in built up areas unless indicated otherwise. The standard speed limit for roads outside of build up areas is 100kmph</p>
         </div>
         <div id="speed-limit-bar"></div>
 
         <div class="article" id="section-speed-2008-2023">
-        <h1>Number of Speed Fines 2008-2023</h1>
+        <h1>Number of Speeding Fines 2008-2023</h1>
             <div id="view-toggle">
-                <button id="show-line">Line Chart</button>
-                <button id="show-table">Table</button>
+                <button class="styled-button" id="show-line">Line Chart</button>
+                <button class="styled-button" id="show-table">Table</button>
             </div>
 
             <div id="speed-2008-2023">
@@ -136,7 +137,7 @@
                     <tbody></tbody>
                 </table>
                 </div>
-                <p>Speed fine data from 2008-2023. Data includes speed fines from infringements caught by camera, or by police. There may be spikes in the data due to the inclusion of speed fines from police. Please hover over a point or switch to the table to check </p>
+                <p>Speed fine data from 2008-2023. Data includes speeding fines from infringements caught by camera, or by police. There may be spikes in the data due to the inclusion of speeding fines from police. Please hover over a point or switch to the table to check </p>
             </div>
         </div>
 
@@ -145,7 +146,7 @@
             <h2>Data Sources</h2>
             <p>Road Safety Enforcement Data 2023, Australian Road Deaths Database<br> Notes:</p>
             <ul>
-                <li> Queensland data submits their Speed Fines in January for the whole year. For our charts, we took the data from queensland and found the average for each month</li>
+                <li> Queensland data submits their Speeding Fines in January for the whole year. For our charts, we took the data from queensland and found the average for each month</li>
             </ul>
         </div>
 

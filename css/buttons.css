@@ -1,0 +1,26 @@
+.styled-button {
+  background-color: #E5E5E5;
+  color: black;
+  border: none;
+  padding: 15px 30px;
+  margin: 5px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: 'Arial', sans-serif;
+}
+
+.styled-button:hover {
+  background-color: #cccccc;
+  transform: translateY(-2px);
+}
+
+.styled-button:active {
+  transform: scale(0.98);
+}
+
+.styled-button:focus {
+  outline: 3px solid #99ccff;
+  outline-offset: 2px;
+}

@@ -122,9 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const buttonsHTML = `
   <div id="speed-limit-buttons" style="margin-bottom: 20px;">
-    <button type="button" data-mode="2023" class="active">2023</button>
-    <button type="button" data-mode="all">1989 - 2025</button>
-    <button type="button" data-mode="granular">2023 Granular</button>
+    <button class="styled-button" type="button" data-mode="2023" class="active">2023</button>
+    <button class="styled-button" type="button" data-mode="all">1989 - 2025</button>
+    <button class="styled-button" type="button" data-mode="granular">2023 Granular</button>
   </div>
 `;
 
