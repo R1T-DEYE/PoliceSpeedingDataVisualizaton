@@ -25,6 +25,7 @@
         <script src="js/linechart_monthly_fines.js"></script>
         <script src="js/speed_limit_fatalities.js"></script>
         <script src="js/fines_2008_2023.js"></script>
+        <script src="js/bar_fatality_jurisdiction.js"></script>
 
 
 
@@ -52,6 +53,7 @@
             <li><button onclick="scrollToSection('section-bar')">Bar Chart</button></li>
             <li><button onclick="scrollToSection('section-choropleth')">Fines by Jurisdiction</button></li>
             <li><button onclick="scrollToSection('section-speed-bars')">Speed Limit and Fatalities</button></li>
+            <li><button onclick="scrollToSection('section-speed-2008-2023')">Speed Fine Trends over the years</button></li>
             <li><button onclick="scrollToSection('data-source')">Data Sources</button></li>
         </ul>
         </nav>
@@ -87,6 +89,12 @@
             <h1>Speed Fines By Jurisdiction 2023</h1>
             <div id="choropleth"></div>
             <p>The total number of speed fine infringements over the course of 2023. </p>
+        </div>
+
+        <div class="article" id="section-bar-fatality-jurisdiction">
+            <h1>Fatalities by Jurisdiction 2023</h1>
+            <div id="section-jurisdiction-fatality"></div>
+            <p>The total number of fatalities by Jurisdiction over the course of 2023. </p>
         </div>
 
         <div class="article" id="section-speed-bars">
@@ -128,6 +136,7 @@
                     <tbody></tbody>
                 </table>
                 </div>
+                <p>Speed fine data from 2008-2023. Data includes speed fines from infringements caught by camera, or by police. There may be spikes in the data due to the inclusion of speed fines from police. Please hover over a point or switch to the table to check </p>
             </div>
         </div>
 
