@@ -155,14 +155,7 @@ function drawFatalityJurisdiction(mode = "raw") {
 
 // === Button setup
 document.addEventListener("DOMContentLoaded", () => {
-  drawFatalityJurisdiction(); // default: raw
-
-  const menuHTML = `
-    <div id="jurisdiction-toggle" style="margin-bottom: 15px;">
-      <button class="styled-button" data-mode="raw" class="active">Fatalities</button>
-      <button class="styled-button" data-mode="compare">Fines</button>
-    </div>
-  `;
+  drawFatalityJurisdiction(); 
   const container = document.getElementById("section-jurisdiction-fatality");
   container.insertAdjacentHTML("afterbegin", menuHTML);
 

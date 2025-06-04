@@ -18,7 +18,7 @@
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="js/load-data.js"></script>
         <script src="js/button_monthly_fines.js"></script>
-        <script src="js/interactions.js"></script>
+        <script src="js/accessibility.js"></script>
         <script src="js/choropleth.js"></script>
         <script src="js/figures.js"></script>
         <script src="js/bar.js"></script>
@@ -61,15 +61,18 @@
         </ul>
         </nav>
 
+        <div class ="article">
+            <h1 class="main-title">Trends in Australian Speeding Enforcement</h1>
+        </div>
 
         <div class="article" id="section-figures">
-            <h1>Australia at a glance (2023)</h1>
+            <h2>Australia at a glance (2023)</h2>
             <div id="figures"></div>
             <p>All figures in this page are based on data from 2023. Including data from Road Safety Enforcement Data 2023, and Australian Road Deaths Database  </p>
         </div>
 
         <div class="article" id="section-monthly">
-            <h1>Fines and Fatalities by Month 2023</h1>
+            <h2>Fines and Fatalities by Month 2023</h2>
             <div id="toggle-buttons">
                 <button class="styled-button" data-view="fatal">Show Fatalities Only</button>
                 <button class="styled-button" data-view="fines">Show Fines Only</button>
@@ -83,32 +86,42 @@
         
 
         <div class="article" id="section-bar">   
-            <h1>Bar Chart</h1>
+            <h2>Bar Chart</h2>
             <div id="bar"></div>
             <p>Place holder</p>
         </div>
 
         <div class="article" id="section-choropleth">
-            <h1>Speeding Fines By Jurisdiction 2023</h1>
+            <h2>Speeding Fines By Jurisdiction 2023</h2>
             <div id="choropleth"></div>
             <p>The total number of speed fine infringements by state over the course of 2023. </p>
         </div>
 
         <div class="article" id="section-bar-fatality-jurisdiction">
-            <h1>Fatalities by Jurisdiction 2023</h1>
+            <h2>Fatalities by Jurisdiction 2023</h2>
+            <div id="jurisdiction-toggle" role="tablist" aria-label="Fatalities vs Fines toggle" style="margin-bottom: 15px;">
+                <button class="styled-button" data-mode="raw" class="active">Fatalities</button>
+                <button class="styled-button" data-mode="compare">Fines</button>
+            </div>
+
             <div id="section-jurisdiction-fatality"></div>
             <p>The total number of fatalities by Jurisdiction over the course of 2023. </p>
         </div>
 
         <div class="article" id="section-speed-bars">
-            <h1>Speed Limit and Fatalities</h1>
+            <h2>Speed Limit and Fatalities</h2>
+            <div id="speed-limit-buttons" style="margin-bottom: 20px;">
+                <button class="styled-button" type="button" data-mode="2023" class="active">2023</button>
+                <button class="styled-button" type="button" data-mode="all">1989 - 2025</button>
+                <button class="styled-button" type="button" data-mode="granular">2023 Granular</button>
+            </div>
             <div id="section-speed-limit-fatalities"></div>
             <p>The standard speed limit in Australia is 50kmph in built up areas unless indicated otherwise. The standard speed limit for roads outside of build up areas is 100kmph</p>
         </div>
         <div id="speed-limit-bar"></div>
 
         <div class="article" id="section-speed-2008-2023">
-        <h1>Number of Speeding Fines 2008-2023</h1>
+        <h2>Number of Speeding Fines 2008-2023</h2>
             <div id="view-toggle">
                 <button class="styled-button" id="show-line">Line Chart</button>
                 <button class="styled-button" id="show-table">Table</button>
@@ -144,7 +157,7 @@
         </div>
 
         <div class="article" id="section-fatalities-2008-2023">
-            <h1>Number of Road Fatalities 2008–2023</h1>
+            <h2>Number of Road Fatalities 2008–2023</h2>
             <div id="view-toggle-fatalities">
                 <button class="styled-button" id="show-line-fatalities">Line Chart</button>
                 <button class="styled-button" id="show-table-fatalities">Table</button>
