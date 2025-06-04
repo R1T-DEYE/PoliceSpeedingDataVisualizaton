@@ -214,3 +214,33 @@ document.addEventListener("DOMContentLoaded", () => {
     tableView.style.display = "block";
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const showLineBtn = document.getElementById("show-line");
+    const showTableBtn = document.getElementById("show-table");
+
+    const lineView = document.getElementById("line-view");
+    const tableView = document.getElementById("table-view");
+
+    const lineStateFilterLabel = document.querySelector('label[for="line-state-filter"]');
+    const lineStateFilterSelect = document.getElementById("line-state-filter");
+
+    showLineBtn.addEventListener("click", () => {
+      lineView.style.display = "block";
+      tableView.style.display = "none";
+
+      // Show the line chart state selector
+      lineStateFilterLabel.style.display = "inline-block";
+      lineStateFilterSelect.style.display = "inline-block";
+    });
+
+    showTableBtn.addEventListener("click", () => {
+      lineView.style.display = "none";
+      tableView.style.display = "block";
+
+      // Hide the line chart state selector
+      lineStateFilterLabel.style.display = "none";
+      lineStateFilterSelect.style.display = "none";
+    });
+  });
