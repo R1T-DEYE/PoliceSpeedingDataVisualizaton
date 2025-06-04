@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/sidebar.css">
         <link rel="stylesheet" href="css/monthly_fines_speed.css">
-        <link rel="stylesheet" href="css/2008_2023_speed.css">
+        <link rel="stylesheet" href="css/2008_2023_tables.css">
         <link rel="stylesheet" href="css/buttons.css">
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="js/load-data.js"></script>
@@ -27,6 +27,7 @@
         <script src="js/speed_limit_fatalities.js"></script>
         <script src="js/fines_2008_2023.js"></script>
         <script src="js/bar_fatality_jurisdiction.js"></script>
+        <script src="js/fatalities_2008_2023.js"></script>
 
 
 
@@ -55,6 +56,7 @@
             <li><button onclick="scrollToSection('section-choropleth')">Fines by Jurisdiction</button></li>
             <li><button onclick="scrollToSection('section-speed-bars')">Speed Limit and Fatalities</button></li>
             <li><button onclick="scrollToSection('section-speed-2008-2023')">Speed Fine Trends over the years</button></li>
+            <li><button onclick="scrollToSection('section-fatalities-2008-2023')">Fatality trends over the years</button></li>
             <li><button onclick="scrollToSection('data-source')">Data Sources</button></li>
         </ul>
         </nav>
@@ -138,6 +140,40 @@
                 </table>
                 </div>
                 <p>Speed fine data from 2008-2023. Data includes speeding fines from infringements caught by camera, or by police. There may be spikes in the data due to the inclusion of speeding fines from police. Please hover over a point or switch to the table to check </p>
+            </div>
+        </div>
+
+        <div class="article" id="section-fatalities-2008-2023">
+            <h1>Number of Road Fatalities 2008–2023</h1>
+            <div id="view-toggle-fatalities">
+                <button class="styled-button" id="show-line-fatalities">Line Chart</button>
+                <button class="styled-button" id="show-table-fatalities">Table</button>
+            </div>
+
+            <div id="fatalities-2008-2023">
+                <label for="fatality-state-filter">Select State: </label>
+                <select id="fatality-state-filter">
+                <option value="all">All States</option>
+                </select>
+                <div id="fatality-legend" style="margin-top: 15px;"></div>
+                <div id="fatality-line-view"></div>
+
+                <div id="fatality-table-view" style="display: none;">
+                <label for="fatality-table-filter">Select State: </label>
+                <select id="fatality-table-filter"></select>
+                <table id="fatality-table">
+                    <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>State</th>
+                        <th>Total Fatalities</th>
+                        <th>% Change from Previous Year</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                </div>
+                <p>Fatal crash data from 2008–2023. Hover over each point for details, or toggle to view the data in a table.</p>
             </div>
         </div>
 
