@@ -93,7 +93,7 @@ function drawFatalChart() {
       .append("circle")
       .attr("cx", d => x(d.month))
       .attr("cy", d => y(d.fatalities))
-      .attr("r", 5)
+      .attr("r", 3)
       .attr("fill", "#022C5E")
       .on("mouseover", (event, d) => {
         tooltip

@@ -120,7 +120,7 @@ function drawFinesChart() {
       .append("circle")
       .attr("cx", d => x(d.month))
       .attr("cy", d => y(d.fines))
-      .attr("r", 5)
+      .attr("r", 3)
       .attr("fill", "#FCA311")
       .on("mouseover", (event, d) => {
         tooltip

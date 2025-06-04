@@ -48,6 +48,21 @@
   font-size: 15px;
 }
 
+.tooltip-linechart {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+
 @media (max-width: 768px) {
   #speed-fines-table th,
   #speed-fines-table td {
