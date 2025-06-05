@@ -10,7 +10,7 @@ const drawBar = (speedData, fatalData) => {
         const month = d.startDate.getMonth(); // 0 = Jan, 11 = Dec
 
         if (jurisdiction === "Queensland" && month === 0 ) {
-            // Split across Jan, Feb, Mar
+            // Split across all months
             const split = Math.round(d.fines / 12);
             for (let i = 0; i < 12; i++) {
                 const newDate = new Date(d.startDate);
