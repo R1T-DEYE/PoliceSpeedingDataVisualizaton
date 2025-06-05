@@ -18,7 +18,7 @@
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="js/load-data.js"></script>
         <script src="js/button_monthly_fines.js"></script>
-        <script src="js/interactions.js"></script>
+        <script src="js/accessibility.js"></script>
         <script src="js/choropleth.js"></script>
         <script src="js/figures.js"></script>
         <script src="js/bar.js"></script>
@@ -50,30 +50,33 @@
 
         <nav class="sidebar-nav">
         <ul>
-            <li><button onclick="scrollToSection('section-figures')">2023 at a Glance</button></li>
-            <li><button onclick="scrollToSection('section-monthly')">Fines and Fatalities by Month</button></li>
-            <li><button onclick="scrollToSection('section-bar')">Bar Chart</button></li>
-            <li><button onclick="scrollToSection('section-choropleth')">Fines by Jurisdiction</button></li>
-            <li><button onclick="scrollToSection('section-speed-bars')">Speed Limit and Fatalities</button></li>
-            <li><button onclick="scrollToSection('section-speed-2008-2023')">Speed Fine Trends over the years</button></li>
-            <li><button onclick="scrollToSection('section-fatalities-2008-2023')">Fatality trends over the years</button></li>
-            <li><button onclick="scrollToSection('data-source')">Data Sources</button></li>
+            <li><button onclick="scrollToSection('section-figures')" aria-label="Sidebar to go to 2023 at a Glance">2023 at a Glance</button></li>
+            <li><button onclick="scrollToSection('section-monthly')" aria-label="Sidebar to go to Fines and Fatalities by month">Fines and Fatalities by Month</button></li>
+            <li><button onclick="scrollToSection('section-bar')" aria-label="Sidebar to go to Bar Chart">Bar Chart</button></li>
+            <li><button onclick="scrollToSection('section-choropleth')" aria-label="Sidebar to go to Fines by Jurisdiction">Fines by Jurisdiction</button></li>
+            <li><button onclick="scrollToSection('section-speed-bars')" aria-label="Sidebar to go to Speed Limit and Fatalities">Speed Limit and Fatalities</button></li>
+            <li><button onclick="scrollToSection('section-speed-2008-2023')" aria-label="Sidebar to go to Speed fine trends over years">Speed Fine Trends over the years</button></li>
+            <li><button onclick="scrollToSection('section-fatalities-2008-2023')" aria-label="Sidebar to go to fatality trends over years">Fatality trends over the years</button></li>
+            <li><button onclick="scrollToSection('data-source')"aria-label="Sidebar to go to Data sources">Data Sources</button></li>
         </ul>
         </nav>
 
+        <div class ="article">
+            <h1 class="main-title">Trends in Australian Speeding Enforcement</h1>
+        </div>
 
         <div class="article" id="section-figures">
-            <h1>Australia at a glance (2023)</h1>
-            <div id="figures"></div>
+            <h2>Australia at a glance (2023)</h2>
+            <div id="figures" aria-label="Boxes showing key figures of 2023, these include total number of fines 4236133, speeding fines issued by cameras, police and total fatalities"></div>
             <p>All figures in this page are based on data from 2023. Including data from Road Safety Enforcement Data 2023, and Australian Road Deaths Database  </p>
         </div>
 
         <div class="article" id="section-monthly">
-            <h1>Fines and Fatalities by Month 2023</h1>
-            <div id="toggle-buttons">
-                <button class="styled-button" data-view="fatal">Show Fatalities Only</button>
-                <button class="styled-button" data-view="fines">Show Fines Only</button>
-                <button class="styled-button" data-view="both">Show Both</button>
+            <h2>Fines and Fatalities by Month 2023</h2>
+            <div id="toggle-buttons" role="tablist" aria-label="Monthly Fines and Fatalities graph toggle">
+                <button class="styled-button" data-view="fatal" aria-label="Toggle to show fatalities by month of 2023">Show Fatalities Only</button>
+                <button class="styled-button" data-view="fines" aria-label="Toggle to show speeding fines by month of 2023">Show Fines Only</button>
+                <button class="styled-button" data-view="both" aria-label="Toggle to show both graphs side by side">Show Both</button>
             </div>
             <div id="chart-wrapper" class="both">
                 <div id="line-chart-monthly-fatal" class="chart-block"></div>
@@ -83,47 +86,57 @@
         
 
         <div class="article" id="section-bar">   
-            <h1>Bar Chart</h1>
+            <h2>Bar Chart</h2>
             <div id="bar"></div>
             <p>Place holder</p>
         </div>
 
         <div class="article" id="section-choropleth">
-            <h1>Speeding Fines By Jurisdiction 2023</h1>
-            <div id="choropleth"></div>
+            <h2>Speeding Fines By Jurisdiction 2023</h2>
+            <div id="choropleth" aria-label="Visual Map of Australian states and the number of speeding fines from 2023. Victoria has the highest"></div>
             <p>The total number of speed fine infringements by state over the course of 2023. </p>
         </div>
 
         <div class="article" id="section-bar-fatality-jurisdiction">
-            <h1>Fatalities by Jurisdiction 2023</h1>
+            <h2>Fatalities by Jurisdiction 2023</h2>
+            <div id="jurisdiction-toggle" role="tablist" aria-label="Fatalities vs Fines graph toggle" style="margin-bottom: 15px;">
+                <button class="styled-button" data-mode="raw" class="active" aria-label="Show only fatality data for 2023">Fatalities</button>
+                <button class="styled-button" data-mode="compare" aria-label="Show only Speed fines data for 2023">Speed Fines</button>
+            </div>
+
             <div id="section-jurisdiction-fatality"></div>
             <p>The total number of fatalities by Jurisdiction over the course of 2023. </p>
         </div>
 
-        <div class="article" id="section-speed-bars">
-            <h1>Speed Limit and Fatalities</h1>
+        <div class="article" id="section-speed-bars" aria-label="Graph showing the number of fatalities based on speed limit">
+            <h2>Fatalities based on Speed Limit</h2>
+            <div id="speed-limit-buttons" role="tablist" aria-label="Toggle to switch between 3 graphs, 2023 or 1989 to 2023 or 2023 with more details" style="margin-bottom: 20px;">
+                <button class="styled-button" type="button" data-mode="2023" class="active" aria-label="Show fatalities based on speed only for 2023">2023</button>
+                <button class="styled-button" type="button" data-mode="all" aria-label="Show fatalities based on speed only for 1989-2025">1989 - 2025</button>
+                <button class="styled-button" type="button" data-mode="granular" aria-label="Show fatalities based on speed, but with more details for speed range. 41-60 and 81-100kmph being the peak range">2023 Granular</button>
+            </div>
             <div id="section-speed-limit-fatalities"></div>
             <p>The standard speed limit in Australia is 50kmph in built up areas unless indicated otherwise. The standard speed limit for roads outside of build up areas is 100kmph</p>
         </div>
         <div id="speed-limit-bar"></div>
 
         <div class="article" id="section-speed-2008-2023">
-        <h1>Number of Speeding Fines 2008-2023</h1>
-            <div id="view-toggle">
-                <button class="styled-button" id="show-line">Line Chart</button>
-                <button class="styled-button" id="show-table">Table</button>
+            <h2>Number of Speeding Fines 2008-2023</h2>
+            <div id="view-toggle" role="tablist" aria-label="Speeding fines graph toggle">
+                <button class="styled-button" id="show-line" aria-label="Toggle to show line chart of speed fines from 2008-2023">Line Chart</button>
+                <button class="styled-button" id="show-table" aria-label="Toggle to show table of speed fines 2008-2023, includes percentage increase or decrease and if fines are from police or a camera">Table</button>
             </div>
 
             <div id="speed-2008-2023">
                 <label for="line-state-filter">Select State: </label>
-                <select id="line-state-filter">
+                <select id="line-state-filter" aria-label="Filter to select a state for the speed fines line chart">
                 <option value="all">All States</option>
                 </select>
                 <div id="line-legend" style="margin-top: 15px;"></div>
                 <div id="line-view"></div>
 
                 <div id="table-view" style="display: none;">
-                <label for="state-filter">Select State: </label>
+                <label for="state-filter" aria-label="Filter to select a state for speed fines table view">Select State: </label>
                 <select id="state-filter"></select>
                 <table id="speed-fines-table">
                     <thead>
@@ -144,14 +157,14 @@
         </div>
 
         <div class="article" id="section-fatalities-2008-2023">
-            <h1>Number of Road Fatalities 2008–2023</h1>
-            <div id="view-toggle-fatalities">
-                <button class="styled-button" id="show-line-fatalities">Line Chart</button>
-                <button class="styled-button" id="show-table-fatalities">Table</button>
+            <h2>Number of Road Fatalities 2008–2023</h2>
+            <div id="view-toggle-fatalities" role="tablist" aria-label="Road fatalities graph toggle">
+                <button class="styled-button" id="show-line-fatalities" aria-label="Toggle to show line chart of fatalities from 2008-2023">Line Chart</button>
+                <button class="styled-button" id="show-table-fatalities"aria-label="Toggle to show table of fatalities 2008-2023, includes percentage increase or decrease">Table</button>
             </div>
 
             <div id="fatalities-2008-2023">
-                <label for="fatality-state-filter">Select State: </label>
+                <label for="fatality-state-filter" aria-label="Filter to select a state for the fatalities line chart">Select State: </label>
                 <select id="fatality-state-filter">
                 <option value="all">All States</option>
                 </select>
@@ -159,19 +172,19 @@
                 <div id="fatality-line-view"></div>
 
                 <div id="fatality-table-view" style="display: none;">
-                <label for="fatality-table-filter">Select State: </label>
-                <select id="fatality-table-filter"></select>
-                <table id="fatality-table">
-                    <thead>
-                    <tr>
-                        <th>Year</th>
-                        <th>State</th>
-                        <th>Total Fatalities</th>
-                        <th>% Change from Previous Year</th>
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+                    <label for="fatality-table-filter" aria-label="Filter to select a state for fatalities table view">Select State: </label>
+                    <select id="fatality-table-filter"></select>
+                    <table id="fatality-table">
+                        <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>State</th>
+                            <th>Total Fatalities</th>
+                            <th>% Change from Previous Year</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
                 <p>Fatal crash data from 2008–2023. Hover over each point for details, or toggle to view the data in a table.</p>
             </div>
@@ -180,14 +193,44 @@
 
         <div class="article" id="data-source">
             <h2>Data Sources</h2>
-            <p>Road Safety Enforcement Data 2023, Australian Road Deaths Database<br> Notes:</p>
+            <p>Road Safety Enforcement Data 2023 <br>Notes:</p>
             <ul>
-                <li> Queensland data submits their Speeding Fines in January for the whole year. For our charts, we took the data from queensland and found the average for each month</li>
+                <li><a href="https://www.bitre.gov.au/publications/2024/road-safety-enforcement-data">Link to Source 1, Data of 2023 only</a></li>
+                <li><a href="https://catalogue.data.infrastructure.gov.au/dataset/road-safety-enforcement-data">Link to Source 2, Data from 2008-2023</a></li>                
+                <h3>General Disclaimers</h3>
+                <li>Data coverage varies across states due to differences in agency responsibilities (e.g., ACT Roads vs ACT Police)</li>
+                <li>Not all police enforcement data is made public. Some states provide both police and camera data; others only provide partial or separate data sources (e.g., NSW Revenue vs NSW Police)</li>
+                <h4>Queensland:</h4>
+                <li>Queensland data submits their Speeding Fines in January for the whole year. For our charts, we took the data from queensland and found the average for each month</li>
+                <li>Not all camera detections lead to fines; each is reviewed by staff</li>
+                <li>Data includes various camera types (mobile, fixed, digital, combined speed/red light)</li>
+                <h4>New South Wales</h4>
+                <li>Pre-2019 data only includes fixed and mobile speed cameras; excludes red-light-related speed fines</li>
+                <li>Speed band categories changed on 1 July 2009</li>
+                <li>As of June 2023, fines are issued by various RMS camera types across three speed bands</li>
+                <h4>Tasmania</h4>
+                <li>No civilian camera operators were used in 2012</li>
+                <li>Detection numbers affected by outdated equipment and software issues</li>
+                <h4>Western Australia</h4>
+                <li>Uses multiple detection methods: on-the-spot, mobile, fixed, average speed, and red light cameras</li>
+
             </ul>
-        </div>
 
-
-
+            <p>Australian Road Deaths Database 2025 <br>Notes:</p>
+            <ul>
+                <li><a href="https://catalogue.data.infrastructure.gov.au/dataset/australian-road-deaths-database">Link to source</a></li>
+                <h3>Acknowledgement</h3>
+                <p>Data used in this page is from Australian Road Deaths Database, which gathers data from road transport crashes from police in Australia. The Australian Road Deaths Database is published by the Bureau of Infrastructure and Transport Research Economics</p> 
+                <p>The Department of Infrastructure, Transport, Regional Development, Communications and the Arts acknowledges the provision of data from the following agencies:</p>
+                <li>Transport for New South Wales</li>
+                <li>Department of Transport, Victoria</li>
+                <li>Queensland Department of Transport and Main Roads</li>
+                <li>Department for Infrastructure and Transport, South Australia</li>
+                <li>Western Australian Police</li>
+                <li>Department of State Growth, Tasmania</li>
+                <li>Department of Transport, Northern Territory</li>
+                <li>Transport Canberra and City Services Directorate, Australian Capital Territory</li>
+            </ul>
 
 
         <footer>
