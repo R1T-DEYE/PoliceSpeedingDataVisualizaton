@@ -24,7 +24,7 @@ function drawSpeedFinesTable() {
     stateFilter.addEventListener("change", () => {
       const selectedState = stateFilter.value;
       const filtered = data.filter(d => d.state === selectedState)
-                           .sort((a, b) => a.year - b.year);
+                          .sort((a, b) => a.year - b.year);
 
       tbody.html("");
 
