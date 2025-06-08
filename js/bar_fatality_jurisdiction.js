@@ -44,7 +44,11 @@ function drawFatalityJurisdiction(mode = "raw") {
     }));
 
     const container = document.querySelector(containerId);
-    const containerWidth = Math.max(container.getBoundingClientRect().width, 360);
+    const minWidth = 350;
+    const containerWidth = Math.max(container.getBoundingClientRect().width, minWidth);
+
+
+    // const containerWidth = Math.max(container.getBoundingClientRect().width, 360);
 
     const margin = { top: 40, right: 30, bottom: 60, left: 60 };
     const width = containerWidth - margin.left - margin.right;
@@ -171,5 +175,37 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     const active = document.querySelector("#jurisdiction-toggle button.active");
     drawFatalityJurisdiction(active?.getAttribute("data-mode") || "raw");
+  });
+});
+
+let currentMode = "raw";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.getElementById("section-jurisdiction-fatality");
+  const buttons = document.querySelectorAll("#jurisdiction-toggle button");
+
+  // Initial draw
+  drawFatalityJurisdiction(currentMode);
+
+  // Toggle buttons
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      // Update active button
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      // Update mode & wrapper class
+      currentMode = btn.getAttribute("data-mode");
+      wrapper.classList.toggle("compare", currentMode === "compare");
+      wrapper.classList.toggle("raw",     currentMode === "raw");
+
+      // Redraw chart
+      drawFatalityJurisdiction(currentMode);
+    });
+  });
+
+  // Redraw on resize
+  window.addEventListener("resize", () => {
+    drawFatalityJurisdiction(currentMode);
   });
 });

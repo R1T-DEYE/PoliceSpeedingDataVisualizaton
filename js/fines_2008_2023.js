@@ -31,12 +31,18 @@ function drawSpeedFinesTable() {
       for (let i = 0; i < filtered.length; i++) {
         const curr = filtered[i];
         const prev = filtered[i - 1];
-        let pctChange = "–";
 
-        if (prev && prev.Speed_Fines !== 0) {
-          const change = ((curr.Speed_Fines - prev.Speed_Fines) / prev.Speed_Fines) * 100;
-          pctChange = isFinite(change) ? `${change.toFixed(1)}%` : "–";
+      let pctChange = "–";
+
+      if (prev && prev.Speed_Fines !== 0) {
+        const change = ((curr.Speed_Fines - prev.Speed_Fines) / prev.Speed_Fines) * 100;
+        if (isFinite(change)) {
+          const arrow = change > 0 ? "▲" : (change < 0 ? "▼" : "");
+          const color = change > 0 ? "red" : (change < 0 ? "green" : "black");
+          pctChange = `<span style="color: ${color}">${change.toFixed(1)}% ${arrow}</span>`;
         }
+      }
+
 
         tbody.append("tr").html(`
           <td>${curr.year}</td>

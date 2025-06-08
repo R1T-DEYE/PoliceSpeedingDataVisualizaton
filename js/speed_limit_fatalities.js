@@ -116,45 +116,40 @@ svg.append("g")
   });
 }
 
-// Filter button interaction
+let currentSpeedLimitMode = "2023";
+
 document.addEventListener("DOMContentLoaded", () => {
-  drawSpeedLimitFatalities(); // default mode: 2023
-
-// const buttonsHTML = `
-//   <div id="speed-limit-buttons" style="margin-bottom: 20px;">
-//     <button class="styled-button" type="button" data-mode="2023" class="active">2023</button>
-//     <button class="styled-button" type="button" data-mode="all">1989 - 2025</button>
-//     <button class="styled-button" type="button" data-mode="granular">2023 Granular</button>
-//   </div>
-// `;
-
-  const container = document.getElementById("section-speed-limit-fatalities");
-  container.insertAdjacentHTML("afterbegin", buttonsHTML);
-
   const buttons = document.querySelectorAll("#speed-limit-buttons button");
 
+  // Initial draw
+  drawSpeedLimitFatalities(currentSpeedLimitMode);
+
+  // Set up toggle buttons
   buttons.forEach(button => {
     button.addEventListener("click", () => {
-    const scrollY = window.scrollY;
+      const scrollY = window.scrollY;
 
-    buttons.forEach(b => b.classList.remove("active"));
-    button.classList.add("active");
+      // Update button states
+      buttons.forEach(b => b.classList.remove("active"));
+      button.classList.add("active");
 
-    // Slight delay allows DOM update (chart removal/insertion) to happen first
-    setTimeout(() => {
-        drawSpeedLimitFatalities(button.getAttribute("data-mode"));
+      // Update current mode
+      currentSpeedLimitMode = button.getAttribute("data-mode");
 
-        // Delay ensures Firefox restores position after DOM redraw
+      // Redraw chart
+      setTimeout(() => {
+        drawSpeedLimitFatalities(currentSpeedLimitMode);
+
+        // Scroll fix for Firefox
         requestAnimationFrame(() => {
-        window.scrollTo({ top: scrollY, behavior: "auto" });
+          window.scrollTo({ top: scrollY, behavior: "auto" });
         });
-    }, 0);
+      }, 0);
     });
-
   });
 
+  // Handle window resize
   window.addEventListener("resize", () => {
-    const active = document.querySelector("#speed-limit-buttons button.active");
-    drawSpeedLimitFatalities(active?.getAttribute("data-mode") || "2023");
+    drawSpeedLimitFatalities(currentSpeedLimitMode);
   });
 });

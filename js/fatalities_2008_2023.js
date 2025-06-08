@@ -186,8 +186,12 @@ function drawFatalitiesTable() {
 
         if (prev && prev.fatalities > 0) {
           const diff = ((curr.fatalities - prev.fatalities) / prev.fatalities) * 100;
-          change = `${diff.toFixed(1)}%`;
+          
+          const arrow = diff > 0 ? "▲" : (diff < 0 ? "▼" : "");
+          const color = diff > 0 ? "red" : (diff < 0 ? "green" : "black");
+          change = `<span style="color: ${color}">${diff.toFixed(1)}% ${arrow}</span>`;
         }
+
 
         tbody.append("tr").html(`
           <td>${curr.year}</td>
