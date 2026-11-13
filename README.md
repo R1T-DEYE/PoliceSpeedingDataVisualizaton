@@ -16,6 +16,22 @@ The site brings together national and state-level road-safety data to make compa
 
 The page includes navigation shortcuts, hover interactions, and controls for switching between visualizations.
 
+## Screenshots
+
+Captured from the running dashboard using the repository's included 2023 CSV datasets.
+
+**National figures**
+
+![2023 Australian enforcement and fatality overview](docs/screenshots/overview.png)
+
+**Monthly fines and fatal crashes**
+
+![2023 monthly fines and fatal-crash trends](docs/screenshots/monthly-trends.png)
+
+**Speeding fines by jurisdiction**
+
+![2023 Australian speeding fines choropleth map](docs/screenshots/jurisdiction-map.png)
+
 ## Technology
 
 - HTML and CSS for the document and responsive presentation.
