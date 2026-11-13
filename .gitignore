@@ -1,0 +1,6 @@
+# macOS Finder metadata
+.DS_Store
+
+# Editor and local development files
+.vscode/
+.idea/
